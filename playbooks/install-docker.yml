@@ -1,0 +1,50 @@
+---
+- hosts: all
+  tasks:
+    - name: Mise à jour de la liste des paquets
+      become: true
+      ansible.builtin.apt:
+        update_cache: true
+
+    - name: Mise à niveau des paquets
+      become: true
+      ansible.builtin.apt:
+        upgrade: true
+        autoremove: true
+        autoclean: true
+
+    - name: Installation des paquets nécessaires pour docker
+      become: true
+      ansible.builtin.apt:
+        name:
+          - apt-transport-https
+          - ca-certificates
+          - curl
+          - gnupg
+        state: present
+        update_cache: true
+
+    - name: Ajout de la clé GPG officielle de Docker
+      become: true
+      ansible.builtin.apt_key:
+        url: "https://download.docker.com/linux/{{ ansible_distribution | lower }}/gpg"
+        state: present
+
+    - name: Ajout du dépôt Docker aux sources APT
+      become: true
+      ansible.builtin.apt_repository:
+        repo: "deb [arch={{ ansible_architecture }}] https://download.docker.com/linux/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} stable"
+        state: present
+        filename: docker
+
+    - name: Installation de Docker
+      become: true
+      ansible.builtin.apt:
+        name:
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io
+          - docker-buildx-plugin
+          - docker-compose-plugin
+        state: present
+        update_cache: yes
