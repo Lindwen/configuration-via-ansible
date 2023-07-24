@@ -1,3 +1,18 @@
+<h1 align="center">Welcome to configuration-via-ansible 👋</h1>
+<p>
+  <img alt="Version" src="https://img.shields.io/badge/version-0.0.1-blue.svg?cacheSeconds=2592000" />
+  <a href="#" target="_blank">
+    <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
+  </a>
+  <a href="https://twitter.com/Lindw3n" target="_blank">
+    <img alt="Twitter: Lindw3n" src="https://img.shields.io/twitter/follow/Lindw3n.svg?style=social" />
+  </a>
+</p>
+
+> Repo qui contient tout mes playbooks Ansible
+
+## Install
+
 0. Création d'une clé SSH et ajout sur le serveur
 ```sh
 ssh-keygen -t ed25519
@@ -31,3 +46,18 @@ cd configuration-via-ansible
 ```sh
 ansible-playbook -i inventory/example-inventory.ini -u your_user playbooks/install-docker.yml -vv
 ```
+
+## Author
+
+👤 **Lindwen**
+
+* Website: https://lindwen.fr/
+* Twitter: [@Lindw3n](https://twitter.com/Lindw3n)
+* Github: [@Lindwen](https://github.com/Lindwen)
+
+## Show your support
+
+Give a ⭐️ if this project helped you!
+
+***
+_This README was generated with ❤️ by [readme-md-generator](https://github.com/kefranabg/readme-md-generator)_
